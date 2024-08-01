@@ -7,20 +7,20 @@ const Navbar = () => {
     setHamburger(!hamburger);
   };
   return (
-    <div className="fixed w-full h-[80px] bg-black flex justify-between items-center px-4 text-white">
+    <div className="fixed w-full h-[80px] bg-black flex justify-between items-center px-[80px] text-white">
       {/* logo  */}
-      <p className="text-3xl text-red-500">Kushal</p>
+      <p className="text-3xl text-cyan-400">Kushal</p>
       {/* list items  */}
       <ul className="hidden md:flex text-2xl">
         <li>Home</li>
         <li>About</li>
         <li>Skills</li>
-        <li>Project</li>
+        <li>Projects</li>
         <li>Contact</li>
       </ul>
 
       {/* hamburger  */}
-      <div className="md:hidden z-10" onClick={toggleHamburger}>
+      <div className="md:hidden z-10 text-2xl" onClick={toggleHamburger}>
         {hamburger ? <FaTimes /> : <FaBars />}
       </div>
 
@@ -37,9 +37,6 @@ const Navbar = () => {
         <li className="text-4xl py-4">Project</li>
         <li className="text-4xl py-4">Contact</li>
       </ul>
-
-      {/* social icons  */}
-      <div className="hidden"></div>
     </div>
   );
 };
