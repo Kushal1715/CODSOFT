@@ -1,22 +1,21 @@
 import React from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
-import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div className="w-full h-screen bg-black px-[80px]">
+    <div className="w-full h-screen bg-[#0a192f] px-[80px]">
       <div className="max-w-[1000px] mx-auto h-screen flex flex-col justify-center">
-        <p className="text-white text-[15px] mb-2 md:text-[20px] lg:text-2xl">
+        <p className="text-white text-[15px] mb-4 md:mb-2 md:text-[20px] lg:text-2xl">
           Hello, It's me
         </p>
-        <h1 className="text-4xl text-white mb-2 md:text-5xl lg:text-7xl">
+        <h1 className="text-4xl text-white mb-4 md:mb-2 md:text-5xl lg:text-7xl">
           Kushal Khadka
         </h1>
-        <h2 className="text-4xl text-white mb-2 md:text-5xl lg:text-7xl">
+        <h2 className="text-4xl text-white mb-4 md:mb-2 md:text-5xl lg:text-7xl">
           And I'm a <span className="text-cyan-500">Frontend Developer</span>
         </h2>
-        <p className="text-white text-[15px] mb-2 md:text-[20px] lg:text-2xl">
+        <p className="text-white text-[15px] mb-4 md:mb-2 md:text-[20px] lg:text-2xl">
           Proficient in HTML, CSS, JavaScript, with experience in frameworks and
           libraries like Tailwind, React, and Redux, focused on creating
           responsive, and user-friendly web applications.

@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Myntra Clone",
+    "img": "/projects/project_1.png",
+    "desc": "Developed a Myntra clone with a fully functional cart page using React and Redux. Users can add, update, and remove items, ensuring a seamless shopping experience.",
+    "code_link": "https://github.com/Kushal1715/React/tree/main/Projects/myntra-clone",
+    "live": ""
+  },
+  {
+    "title": "Digital Bazar",
+    "img": "/projects/project_2.png",
+    "desc": "Developed a full-stack e-commerce website using PHP, providing a comprehensive platform for online shopping with features such as product listings, user authentication, and a shopping cart.",
+    "code_link": "https://github.com/Kushal1715/Project",
+    "live": ""
+  },
+  {
+    "title": "News Hero",
+    "img": "/projects/project_3.png",
+    "desc": "Developed NewsHero using React, displaying news from various categories by integrating a public API.",
+    "code_link": "https://github.com/Kushal1715/React/tree/main/Projects/newsapp",
+    "live": ""
+  },
+  {
+    "title": "Text Utils",
+    "img": "/projects/project_4.png",
+    "desc": "Developed TextUtils using React, a tool for editing text that also allows users to enable or disable dark mode.",
+    "code_link": "https://github.com/Kushal1715/React/tree/main/Projects/textutils",
+    "live": "https://my-text-utils-app.netlify.app/"
+  }
+]

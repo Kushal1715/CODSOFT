@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
 const Navbar = () => {
   const [hamburger, setHamburger] = useState(false);
 
@@ -7,16 +8,26 @@ const Navbar = () => {
     setHamburger(!hamburger);
   };
   return (
-    <div className="fixed w-full h-[80px] bg-black flex justify-between items-center px-[80px] text-white">
+    <div className="fixed w-full h-[80px] bg-[#0a192f] flex justify-between items-center px-[80px] text-white">
       {/* logo  */}
       <p className="text-3xl text-cyan-400">Kushal</p>
       {/* list items  */}
       <ul className="hidden md:flex text-2xl">
-        <li>Home</li>
-        <li>About</li>
-        <li>Skills</li>
-        <li>Projects</li>
-        <li>Contact</li>
+        <Link to={"/"}>
+          <li>Home</li>
+        </Link>
+        <Link to={"/about"}>
+          <li>About</li>
+        </Link>
+        <Link to={"/skills"}>
+          <li>Skills</li>
+        </Link>
+        <Link to={"/projects"}>
+          <li>Projects</li>
+        </Link>
+        <Link to={"/contact"}>
+          <li>Contact</li>
+        </Link>
       </ul>
 
       {/* hamburger  */}
@@ -31,11 +42,31 @@ const Navbar = () => {
             : "hidden"
         }`}
       >
-        <li className="text-4xl py-4">Home</li>
-        <li className="text-4xl py-4">About</li>
-        <li className="text-4xl py-4">Skills</li>
-        <li className="text-4xl py-4">Project</li>
-        <li className="text-4xl py-4">Contact</li>
+        <Link to={"/"}>
+          <li className="text-4xl py-4" onClick={() => setHamburger(false)}>
+            Home
+          </li>
+        </Link>
+        <Link to={"/about"}>
+          <li className="text-4xl py-4" onClick={() => setHamburger(false)}>
+            About
+          </li>
+        </Link>
+        <Link to={"/skills"}>
+          <li className="text-4xl py-4" onClick={() => setHamburger(false)}>
+            Skills
+          </li>
+        </Link>
+        <Link to={"/projects"}>
+          <li className="text-4xl py-4" onClick={() => setHamburger(false)}>
+            Projects
+          </li>
+        </Link>
+        <Link to={"/contact"}>
+          <li className="text-4xl py-4" onClick={() => setHamburger(false)}>
+            Contact
+          </li>
+        </Link>
       </ul>
     </div>
   );

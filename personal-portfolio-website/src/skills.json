@@ -1,0 +1,30 @@
+[
+  {
+    "title": "HTML",
+    "img": "/html.png"
+  },
+  {
+    "title": "CSS",
+    "img": "/css.png"
+  },
+  {
+    "title": "JAVASCRIPT",
+    "img": "/javascript.png"
+  },
+  {
+    "title": "REACT",
+    "img": "/react.png"
+  },
+  {
+    "title": "GITHUB",
+    "img": "/github.png"
+  },
+  {
+    "title": "TAILWIND",
+    "img": "/tailwind.png"
+  },
+  {
+    "title": "REDUX",
+    "img": "/redux.png"
+  }
+]
