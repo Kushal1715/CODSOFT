@@ -15,7 +15,7 @@ const Projects = () => {
           {projects.map((project) => {
             return (
               <div
-                className="border-2 border-cyan-500 w-[400px]"
+                className="border-2 border-cyan-500 w-[400px] rounded-xl"
                 key={project.title}
               >
                 <div className="p-4">
@@ -29,7 +29,7 @@ const Projects = () => {
                   </div>
                   <div className="text-black flex justify-center items-center">
                     <a href={project.code_link} target="_blank">
-                      <button className="px-[30px] border-2 bg-cyan-500 py-2 text-[18px]">
+                      <button className="px-[30px] border-2 bg-cyan-500 py-2 text-[18px] rounded-2xl">
                         Code
                       </button>
                     </a>
