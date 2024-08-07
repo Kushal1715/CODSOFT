@@ -10,6 +10,7 @@ const Tasks = () => {
   const [openInput, setOpenInput] = useState(false);
   const [updateTitle, setUpdateTitle] = useState("");
   const [updateDesc, setUpdateDesc] = useState("");
+  const [updateId, setUpdateId] = useState(null);
   return (
     <>
       {openInput ? (
@@ -18,7 +19,14 @@ const Tasks = () => {
             className="absolute top-[188px] right-[430px] cursor-pointer text-4xl"
             onClick={() => setOpenInput(false)}
           />
-          <InputBox updateTitle={updateTitle} updateDesc={updateDesc} />
+          <InputBox
+            openInput={openInput}
+            updateId={updateId}
+            updateTitle={updateTitle}
+            updateDesc={updateDesc}
+            setUpdateTitle={setUpdateTitle}
+            setUpdateDesc={setUpdateDesc}
+          />
         </div>
       ) : (
         <div className="grid grid-cols-3">
@@ -33,6 +41,7 @@ const Tasks = () => {
                 setOpenInput={setOpenInput}
                 setUpdateTitle={setUpdateTitle}
                 setUpdateDesc={setUpdateDesc}
+                setUpdateId={setUpdateId}
               />
             );
           })}

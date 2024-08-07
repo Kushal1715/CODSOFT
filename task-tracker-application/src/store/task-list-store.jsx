@@ -1,38 +1,12 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useState } from "react";
 
 export const TaskList = createContext({
   taskList: [],
+  nextId: 0,
   addTask: () => {},
   updateTask: () => {},
   deleteTask: () => {},
 });
-
-const defaultTaskList = [
-  {
-    id: 1,
-    title: "hello",
-    desc: "my name is kushal khadka asdfasdfasf asdf lorem24asdfasdfl asdlfasdf asldfasdf the last of title one asdfasdfklasjd fas asldjfkalsdfajlksdfjo awiejq[ewipf v aoisdjf awoefhbvwoiefv ",
-    status: "Completed",
-  },
-  {
-    id: 2,
-    title: "hello2",
-    desc: "i am doing codesoft intern",
-    status: "Completed",
-  },
-  {
-    id: 3,
-    title: "hello2",
-    desc: "i am doing codesoft intern",
-    status: "Incompleted",
-  },
-  {
-    id: 4,
-    title: "hello2",
-    desc: "i am doing codesoft intern",
-    status: "Incompleted",
-  },
-];
 
 const taskListReducer = (currentTaskList, action) => {
   if (action.type === "delete_task") {
@@ -41,11 +15,19 @@ const taskListReducer = (currentTaskList, action) => {
   if (action.type === "add_task") {
     return [action.payload, ...currentTaskList];
   }
+  if (action.type === "update_task") {
+    return currentTaskList.map((task) =>
+      task.id === action.payload.id
+        ? { ...task, title: action.payload.title, desc: action.payload.desc }
+        : task
+    );
+  }
   return currentTaskList;
 };
 
 const TaskListProvider = ({ children }) => {
-  const [taskList, dispatch] = useReducer(taskListReducer, defaultTaskList);
+  const [taskList, dispatch] = useReducer(taskListReducer, []);
+  const [nextId, setNextId] = useState(1);
 
   const addTask = (id, title, desc, status) => {
     console.log(id, title, desc, status);
@@ -58,10 +40,19 @@ const TaskListProvider = ({ children }) => {
         status,
       },
     });
+    setNextId(id + 1);
   };
 
-  const updateTask = (title, desc) => {
-    console.log(title, desc);
+  const updateTask = (id, title, desc) => {
+    console.log(id, title, desc);
+    dispatch({
+      type: "update_task",
+      payload: {
+        id,
+        title,
+        desc,
+      },
+    });
   };
 
   const deleteTask = (listId) => {
@@ -73,7 +64,9 @@ const TaskListProvider = ({ children }) => {
     });
   };
   return (
-    <TaskList.Provider value={{ taskList, addTask, updateTask, deleteTask }}>
+    <TaskList.Provider
+      value={{ taskList, nextId, addTask, updateTask, deleteTask }}
+    >
       {children}
     </TaskList.Provider>
   );

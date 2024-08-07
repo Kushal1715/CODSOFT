@@ -11,13 +11,15 @@ const TaskCard = ({
   setOpenInput,
   setUpdateTitle,
   setUpdateDesc,
+  setUpdateId,
 }) => {
   const { deleteTask, taskList } = useContext(TaskList);
 
-  const handleUpdate = (title, desc) => {
+  const handleUpdate = (id, title, desc) => {
     setOpenInput(true);
     setUpdateTitle(title);
     setUpdateDesc(desc);
+    setUpdateId(id);
   };
   return (
     <>
@@ -39,7 +41,7 @@ const TaskCard = ({
           <div className="text-2xl">
             <FaEdit
               className="cursor-pointer"
-              onClick={() => handleUpdate(title, desc)}
+              onClick={() => handleUpdate(id, title, desc)}
             />
           </div>
           <div className="text-2xl">
