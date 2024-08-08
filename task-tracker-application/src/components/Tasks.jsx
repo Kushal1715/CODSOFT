@@ -4,8 +4,10 @@ import { TaskList } from "../store/task-list-store";
 import InputBox from "./InputBox";
 
 import { MdOutlineClose } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const Tasks = () => {
+  const navigate = useNavigate();
   const { taskList } = useContext(TaskList);
   const [openInput, setOpenInput] = useState(false);
   const [updateTitle, setUpdateTitle] = useState("");
@@ -28,7 +30,7 @@ const Tasks = () => {
             setUpdateDesc={setUpdateDesc}
           />
         </div>
-      ) : (
+      ) : taskList.length ? (
         <div className="grid grid-cols-3">
           {taskList.map((list, index) => {
             return (
@@ -45,6 +47,16 @@ const Tasks = () => {
               />
             );
           })}
+        </div>
+      ) : (
+        <div className="text-center">
+          <h1 className="text-5xl font-bold mb-4">Task list is empty</h1>
+          <button
+            className="px-4 py-2 bg-black text-white"
+            onClick={() => navigate("/addTask")}
+          >
+            Add new task
+          </button>
         </div>
       )}
     </>

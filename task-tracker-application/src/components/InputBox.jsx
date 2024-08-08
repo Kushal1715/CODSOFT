@@ -1,5 +1,7 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { TaskList } from "../store/task-list-store";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const InputBox = ({
   updateId,
@@ -10,16 +12,23 @@ const InputBox = ({
   openInput,
 }) => {
   const { addTask, updateTask, nextId } = useContext(TaskList);
+  const [error, setError] = useState(false);
   const title = useRef();
   const desc = useRef();
 
   const addTitle = (e) => {
     e.preventDefault();
-    let taskTitle = title.current.value;
-    let taskDesc = desc.current.value;
-    addTask(nextId, taskTitle, taskDesc, "Incompleted");
-    title.current.value = "";
-    desc.current.value = "";
+    let taskTitle = title.current.value.trim();
+    let taskDesc = desc.current.value.trim();
+
+    if (!taskTitle || !taskDesc) {
+      setError(true);
+    } else {
+      addTask(nextId, taskTitle, taskDesc, "Incompleted");
+      title.current.value = "";
+      desc.current.value = "";
+      toast("task is added to list");
+    }
   };
 
   const handleUpdateTask = (e) => {
@@ -27,13 +36,20 @@ const InputBox = ({
     let taskTitle = title.current.value;
     let taskDesc = desc.current.value;
     updateTask(updateId, taskTitle, taskDesc);
+    toast("Your task is updated");
   };
   return (
     <div className="w-full h-[94vh] flex flex-col justify-center items-center ">
+      <ToastContainer />
       <h1 className="text-3xl mb-4 text-black font-bold underline">
         {openInput ? "Update" : "Add new"} task:
       </h1>
       <form className="border-2 border-black p-4 flex flex-col">
+        {error && (
+          <h1 className="text-red-500 text-2xl">
+            * Please input all the fields
+          </h1>
+        )}
         {openInput ? (
           <div className="flex flex-col">
             <input
