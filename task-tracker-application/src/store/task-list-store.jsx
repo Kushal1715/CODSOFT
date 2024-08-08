@@ -6,6 +6,7 @@ export const TaskList = createContext({
   addTask: () => {},
   updateTask: () => {},
   deleteTask: () => {},
+  changeStatus: () => {},
 });
 
 const taskListReducer = (currentTaskList, action) => {
@@ -19,6 +20,13 @@ const taskListReducer = (currentTaskList, action) => {
     return currentTaskList.map((task) =>
       task.id === action.payload.id
         ? { ...task, title: action.payload.title, desc: action.payload.desc }
+        : task
+    );
+  }
+  if (action.type === "change_status") {
+    return currentTaskList.map((task) =>
+      task.id === action.payload.id
+        ? { ...task, status: action.payload.status }
         : task
     );
   }
@@ -63,9 +71,26 @@ const TaskListProvider = ({ children }) => {
       },
     });
   };
+
+  const changeStatus = (id, status) => {
+    dispatch({
+      type: "change_status",
+      payload: {
+        id,
+        status,
+      },
+    });
+  };
   return (
     <TaskList.Provider
-      value={{ taskList, nextId, addTask, updateTask, deleteTask }}
+      value={{
+        taskList,
+        nextId,
+        addTask,
+        updateTask,
+        deleteTask,
+        changeStatus,
+      }}
     >
       {children}
     </TaskList.Provider>

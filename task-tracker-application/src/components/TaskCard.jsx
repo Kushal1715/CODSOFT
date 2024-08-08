@@ -13,7 +13,12 @@ const TaskCard = ({
   setUpdateDesc,
   setUpdateId,
 }) => {
-  const { deleteTask, taskList } = useContext(TaskList);
+  const { deleteTask, taskList, changeStatus } = useContext(TaskList);
+
+  const handleStatus = (id, status) => {
+    let newStatus = status === "Incompleted" ? "Completed" : "Incompleted";
+    changeStatus(id, newStatus);
+  };
 
   const handleUpdate = (id, title, desc) => {
     setOpenInput(true);
@@ -34,6 +39,7 @@ const TaskCard = ({
               className={`${
                 status === "Incompleted" ? "bg-orange-400" : "bg-green-400"
               }  px-4 py-2 rounded-xl`}
+              onClick={() => handleStatus(id, status)}
             >
               {status}
             </button>
@@ -47,7 +53,7 @@ const TaskCard = ({
           <div className="text-2xl">
             <MdDelete
               className="cursor-pointer"
-              onClick={() => deleteTask(id)}
+              onClick={() => deleteTask(id, status)}
             />
           </div>
         </div>
