@@ -45,7 +45,7 @@ const Home = () => {
         <a
           href="/resume/kushalResume.pdf"
           download
-          className="bg-cyan-400 px-5 py-4 w-[148px] rounded-3xl leading-3 text-[18px]"
+          className="bg-cyan-400 px-5 py-4 w-[155px] rounded-3xl leading-3 text-[18px]"
         >
           Download CV
         </a>

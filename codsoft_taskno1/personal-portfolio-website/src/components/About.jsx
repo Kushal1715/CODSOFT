@@ -26,7 +26,7 @@ const About = () => {
           <a
             href="mailto:kushalkhadka77@gmail.com"
             target="_blank"
-            className="bg-cyan-400 px-5 py-4 w-[124px] rounded-3xl leading-3 text-[18px] text-black"
+            className="bg-cyan-400 px-5 py-4 w-[140px] rounded-3xl leading-3 text-[18px] text-black"
           >
             Contact me
           </a>
