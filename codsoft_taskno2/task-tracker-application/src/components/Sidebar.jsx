@@ -36,11 +36,11 @@ const Sidebar = () => {
   return (
     <div className="">
       <div className="mb-[100px]">
-        <h1 className="text-3xl font-bold border-b-2 border-black pb-1">
+        <h1 className="text-3xl font-bold border-b-2 border-black pb-6 text-center pt-6 text-red-500">
           Task Tracker Application
         </h1>
       </div>
-      <div className="">
+      <div className="p-2 ">
         {tasks.map((task) => {
           return (
             <Link
@@ -48,7 +48,7 @@ const Sidebar = () => {
               to={task.route}
               className={`flex justify-start items-center gap-2 mb-3 py-2 cursor-pointer ${
                 task.route === active
-                  ? "bg-black text-white"
+                  ? "bg-yellow-200 text-black"
                   : "bg-slate-300 text-black"
               }`}
               onClick={() => toggleActive(task.route)}

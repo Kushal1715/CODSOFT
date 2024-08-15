@@ -31,28 +31,51 @@ const Tasks = () => {
           />
         </div>
       ) : taskList.length ? (
-        <div className="grid grid-cols-3">
-          {taskList.map((list, index) => {
-            return (
-              <TaskCard
-                key={index}
-                id={list.id}
-                title={list.title}
-                desc={list.desc}
-                status={list.status}
-                setOpenInput={setOpenInput}
-                setUpdateTitle={setUpdateTitle}
-                setUpdateDesc={setUpdateDesc}
-                setUpdateId={setUpdateId}
-              />
-            );
-          })}
+        <div className="overflow-x-auto mt-4">
+          <h1 className=" text-4xl mb-4 flex justify-center items-center font-bold">
+            Task List
+            <span className="text-2xl text-gray-500">{`(${taskList.length})`}</span>
+          </h1>
+          <table className="min-w-full bg-white border border-gray-200">
+            <thead className="bg-gray-100 border-b ">
+              <tr>
+                <th className="px-4 py-2 text-left text-2xl font-medium text-gray-600">
+                  Title
+                </th>
+                <th className="px-4 py-2 text-left text-2xl font-medium text-gray-600">
+                  Description
+                </th>
+                <th className="px-4 py-2 text-left text-2xl font-medium text-gray-600">
+                  Status
+                </th>
+                <th className="px-4 py-2 text-left text-2xl font-medium text-gray-600">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+
+            {taskList.map((list, index) => {
+              return (
+                <TaskCard
+                  key={index}
+                  id={list.id}
+                  title={list.title}
+                  desc={list.desc}
+                  status={list.status}
+                  setOpenInput={setOpenInput}
+                  setUpdateTitle={setUpdateTitle}
+                  setUpdateDesc={setUpdateDesc}
+                  setUpdateId={setUpdateId}
+                />
+              );
+            })}
+          </table>
         </div>
       ) : (
         <div className="text-center">
           <h1 className="text-5xl font-bold mb-4">Task list is empty</h1>
           <button
-            className="px-4 py-2 bg-black text-white"
+            className="px-4 py-2 bg-blue-600 text-white"
             onClick={() => navigate("/addTask")}
           >
             Add new task

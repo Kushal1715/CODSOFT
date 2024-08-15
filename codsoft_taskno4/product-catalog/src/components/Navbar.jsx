@@ -1,10 +1,13 @@
 import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
+import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <nav className="flex justify-between items-center px-[80px] w-full h-[65px] bg-orange-400 text-black">
       <div className="text-2xl font-bold ">
-        <h1>Product Catalog</h1>
+        <Link to="/">
+          <h1>Product Catalog</h1>
+        </Link>
       </div>
       <div>
         <input
@@ -14,7 +17,9 @@ const Navbar = () => {
         />
       </div>
       <div>
-        <FaShoppingCart size={25} />
+        <Link to="/cart">
+          <FaShoppingCart size={25} />
+        </Link>
       </div>
     </nav>
   );

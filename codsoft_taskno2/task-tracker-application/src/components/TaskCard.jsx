@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { TaskList } from "../store/task-list-store";
@@ -13,7 +13,7 @@ const TaskCard = ({
   setUpdateDesc,
   setUpdateId,
 }) => {
-  const { deleteTask, taskList, changeStatus } = useContext(TaskList);
+  const { deleteTask, changeStatus } = useContext(TaskList);
 
   const handleStatus = (id, status) => {
     let newStatus = status === "Incompleted" ? "Completed" : "Incompleted";
@@ -26,39 +26,36 @@ const TaskCard = ({
     setUpdateDesc(desc);
     setUpdateId(id);
   };
+
   return (
-    <>
-      <div className="border-2 border-slate-400 m-2 p-3">
-        <div className="mb-4">
-          <h1 className="text-2xl font-bold mb-2">{title}</h1>
-          <p className="text-[18px]">{desc}</p>
-        </div>
-        <div className="flex items-center gap-8">
-          <div>
-            <button
-              className={`${
-                status === "Incompleted" ? "bg-orange-400" : "bg-green-400"
-              }  px-4 py-2 rounded-xl`}
-              onClick={() => handleStatus(id, status)}
-            >
-              {status}
-            </button>
-          </div>
-          <div className="text-2xl">
-            <FaEdit
-              className="cursor-pointer"
-              onClick={() => handleUpdate(id, title, desc)}
-            />
-          </div>
-          <div className="text-2xl">
-            <MdDelete
-              className="cursor-pointer"
-              onClick={() => deleteTask(id, status)}
-            />
-          </div>
-        </div>
-      </div>
-    </>
+    <tbody className="text-[20px]">
+      <tr className="border-b hover:bg-gray-50 transition">
+        <td className="px-4 py-3 max-w-32 break-words">{title}</td>
+        <td className="px-4 py-3 max-w-xs break-words">{desc}</td>
+        <td className="px-4 py-3">
+          <span
+            className={`px-5 py-3 rounded-full cursor-pointer text-white ${
+              status === "Incompleted" ? "bg-orange-400" : "bg-green-400"
+            }`}
+            onClick={() => handleStatus(id, status)}
+          >
+            {status}
+          </span>
+        </td>
+        <td className="px-4 py-3 flex items-center space-x-2">
+          <FaEdit
+            className="text-blue-500 cursor-pointer"
+            onClick={() => handleUpdate(id, title, desc)}
+            size={25}
+          />
+          <MdDelete
+            className="text-red-500 cursor-pointer"
+            onClick={() => deleteTask(id, status)}
+            size={25}
+          />
+        </td>
+      </tr>
+    </tbody>
   );
 };
 

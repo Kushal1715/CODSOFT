@@ -16,7 +16,7 @@ const InputBox = ({
   const title = useRef();
   const desc = useRef();
 
-  const addTitle = (e) => {
+  const addTitleandDesc = (e) => {
     e.preventDefault();
     let taskTitle = title.current.value.trim();
     let taskDesc = desc.current.value.trim();
@@ -56,7 +56,7 @@ const InputBox = ({
               type="text"
               placeholder="Title"
               name="title"
-              className="mb-4 px-3 py-2 rounded bg-slate-800 text-white"
+              className="mb-4 px-3 py-2 rounded bg-slate-600 text-white"
               ref={title}
               value={updateTitle}
               onChange={(e) => setUpdateTitle(e.target.value)}
@@ -67,7 +67,7 @@ const InputBox = ({
               cols="40"
               rows="6"
               placeholder="Description"
-              className="px-3 py-2 rounded bg-slate-800 text-white mb-4"
+              className="px-3 py-2 rounded bg-slate-600 text-white mb-4"
               ref={desc}
               value={updateDesc}
               onChange={(e) => setUpdateDesc(e.target.value)}
@@ -79,7 +79,7 @@ const InputBox = ({
               type="text"
               placeholder="Title"
               name="title"
-              className="mb-4 px-3 py-2 rounded bg-slate-800 text-white"
+              className="mb-4 px-3 py-2 rounded bg-slate-600 text-white"
               ref={title}
             />
             <textarea
@@ -88,7 +88,7 @@ const InputBox = ({
               cols="40"
               rows="6"
               placeholder="Description"
-              className="px-3 py-2 rounded bg-slate-800 text-white mb-4"
+              className="px-3 py-2 rounded bg-slate-600 text-white mb-4"
               ref={desc}
             ></textarea>
           </div>
@@ -106,7 +106,7 @@ const InputBox = ({
           <button
             type="submit"
             className="bg-blue-500 px-4 py-2 text-white rounded-xl w-[110px]"
-            onClick={addTitle}
+            onClick={addTitleandDesc}
           >
             Add
           </button>

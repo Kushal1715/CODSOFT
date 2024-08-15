@@ -5,7 +5,6 @@ import Products from "../components/Products";
 const Home = () => {
   return (
     <>
-      <Navbar />
       <Products />
     </>
   );

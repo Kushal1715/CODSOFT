@@ -39,6 +39,7 @@ const Products = () => {
                 img={product.thumbnail}
                 name={product.title}
                 price={product.price}
+                rating={product.rating}
               />
             );
           })}
