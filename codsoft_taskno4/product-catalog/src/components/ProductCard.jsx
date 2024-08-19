@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa6";
+import { useDispatch } from "react-redux";
+import { cartActions } from "../store/cart";
 
-const ProductCard = ({ img, name, price, rating }) => {
+const ProductCard = ({ id, img, name, price, rating }) => {
   const [showCart, setShowCart] = useState(false);
+  const dispatch = useDispatch();
+
+  const addToCart = (id) => {
+    dispatch(cartActions.addCartItem(id));
+  };
   return (
     <div className="border-2 border-gray-400 p-2 h-[476px]">
       <div
@@ -16,7 +23,10 @@ const ProductCard = ({ img, name, price, rating }) => {
           <FaStar className="text-yellow-400" />
         </div>
         {showCart && (
-          <button className="bg-orange-400 px-3 py-2 rounded-xl">
+          <button
+            className="bg-orange-400 px-3 py-2 rounded-xl"
+            onClick={() => addToCart(id)}
+          >
             Add to cart
           </button>
         )}
@@ -24,9 +34,9 @@ const ProductCard = ({ img, name, price, rating }) => {
       <div className="p-3">
         <p className=" font-bold w-[310px] mb-2">{name}</p>
         <div className="flex">
-          <p className=" font-bold mr-2">Rs. {Math.ceil(price)}</p>
+          <p className=" font-bold mr-2">Rs. {Math.ceil(price) * 135}</p>
           <p className=" font-bold text-gray-500 line-through">
-            Rs. {Math.ceil(10000 / 100 + price)}
+            Rs. {Math.ceil(1000 / 100 + price) * 135}
           </p>
         </div>
       </div>
